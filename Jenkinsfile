@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 git branch: 'dev',
@@ -12,10 +13,10 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-        npm config set fetch-timeout 600000
-        npm config set fetch-retry-maxtimeout 600000
-        npm install
-        '''
+                npm config set fetch-timeout 600000
+                npm config set fetch-retry-maxtimeout 600000
+                npm install
+                '''
             }
         }
 
@@ -25,15 +26,25 @@ pipeline {
             }
         }
 
-        stage('Docker Image Build') {
+        stage('Docker Build') {
             steps {
-                sh 'docker build -t aws_fe:v1 .'
+                sh '''
+                docker build -t aws_fe:v1 .
+                '''
             }
         }
 
-        stage('Docker Containerize') {
+        stage('Deploy Container') {
             steps {
-                sh 'docker run -d --name react-app -p 3000:80 aws_fe:v1'
+                sh '''
+                docker stop aws_fe-container || true
+                docker rm aws_fe-container || true
+
+                docker run -d \
+                  --name aws_fe-container \
+                  -p 3000:80 \
+                  aws_fe:v1
+                '''
             }
         }
     }
