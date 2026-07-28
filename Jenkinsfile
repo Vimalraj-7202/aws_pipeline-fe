@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 git branch: 'dev',
@@ -12,7 +11,11 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh '''
+        npm config set fetch-timeout 600000
+        npm config set fetch-retry-maxtimeout 600000
+        npm install
+        '''
             }
         }
 
