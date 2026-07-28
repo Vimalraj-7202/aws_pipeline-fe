@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'dev',
-                    url: 'https://github.com/your-username/aws_pipeline-fe.git'
+                    url: 'https://github.com/Vimalraj-7202/aws_pipeline-fe.git'
             }
         }
 
