@@ -1,4 +1,5 @@
 export default function Home() {
-  return <>aws</>;
-  return <>aws</>;
+  return (
+    <h2>AWS frontend deploy</>
+  )
 }
