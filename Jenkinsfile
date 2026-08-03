@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = "vimalraj7202/aws_fe-deployment"
+    }
+
     stages {
 
         stage('Checkout') {
@@ -20,21 +24,23 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Application') {
             steps {
                 sh 'npm run build'
             }
         }
 
-        stage('Docker Build') {
+        stage('Build Docker Image') {
             steps {
                 sh '''
-                docker build -t vimalraj7202/aws_fe-deployment:${BUILD_NUMBER} .
+                docker build \
+                  -t ${IMAGE_NAME}:${BUILD_NUMBER} \
+                  -t ${IMAGE_NAME}:latest .
                 '''
             }
         }
 
-        stage('Push to Docker Hub') {
+        stage('Push Docker Image') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-creds',
@@ -43,7 +49,10 @@ pipeline {
                 )]) {
                     sh '''
                     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                    docker push vimalraj7202/aws_fe-deployment:${BUILD_NUMBER}
+
+                    docker push ${IMAGE_NAME}:${BUILD_NUMBER}
+                    docker push ${IMAGE_NAME}:latest
+
                     docker logout
                     '''
                 }
@@ -58,7 +67,7 @@ pipeline {
             }
         }
 
-        stage('Deploy Container') {
+        stage('Deploy Locally') {
             steps {
                 sh '''
                 docker stop aws_fe-container || true
@@ -67,9 +76,18 @@ pipeline {
                 docker run -d \
                   --name aws_fe-container \
                   -p 3000:80 \
-                  vimalraj7202/aws_fe-deployment:${BUILD_NUMBER}
+                  ${IMAGE_NAME}:${BUILD_NUMBER}
                 '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo "Build #${BUILD_NUMBER} completed successfully."
+        }
+        failure {
+            echo "Build failed."
         }
     }
 }
