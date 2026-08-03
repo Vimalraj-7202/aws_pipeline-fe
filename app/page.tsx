@@ -9,7 +9,7 @@ export default function Home() {
         color: "#0f0d8b",
       }}
     >
-      🚀 AWS Frontend Deployed with Docker Hub & Render
+    Frontend deployed on render via docker image
     </h2>
   );
 }
