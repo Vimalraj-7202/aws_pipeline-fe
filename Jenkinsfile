@@ -29,8 +29,24 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                docker build -t aws_fe:v1 .
+                docker build -t vimalraj7202/aws_fe-deployment:v1 .
                 '''
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USERNAME',
+                    passwordVariable: 'DOCKER_PASSWORD'
+                )]) {
+                    sh '''
+                    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                    docker push vimalraj7202/aws_fe-deployment:v1
+                    docker logout
+                    '''
+                }
             }
         }
 
@@ -43,7 +59,7 @@ pipeline {
                 docker run -d \
                   --name aws_fe-container \
                   -p 3000:80 \
-                  aws_fe:v1
+                  vimalraj7202/aws_fe-deployment:v1
                 '''
             }
         }
