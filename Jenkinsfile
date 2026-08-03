@@ -50,6 +50,14 @@ pipeline {
             }
         }
 
+        stage('Trigger Render Deploy') {
+            steps {
+                sh '''
+                curl -X POST "https://api.render.com/deploy/srv-d9o65up42hec738pjh0g?key=TFrvp8ZIZRE"
+                '''
+            }
+        }
+
         stage('Deploy Container') {
             steps {
                 sh '''
