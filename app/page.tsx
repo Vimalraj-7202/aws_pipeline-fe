@@ -1,15 +1,14 @@
+'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 export default function Home() {
-  return (
-    <h2
-      style={{
-        fontSize: "2.5rem",
-        fontWeight: "700",
-        textAlign: "center",
-        marginTop: "100px",
-        color: "#0f0d8b",
-      }}
-    >
-    Frontend deployed on render via docker image
-    </h2>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    router.replace(token ? '/dashboard' : '/auth/login');
+  }, [router]);
+
+  return null;
 }
