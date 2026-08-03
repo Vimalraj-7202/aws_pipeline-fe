@@ -22,7 +22,7 @@ export default function LoginPage() {
   return (
     <Box sx={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: '#efeeff' }}>
       <Paper elevation={4} sx={{ p: 4, width: 360, borderRadius: 3 }}>
-        <Typography variant="h5" fontWeight={700} mb={3} textAlign="center" color="#0f0d8b">
+        <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, textAlign: 'center', color: '#0f0d8b' }}>
           Sign In
         </Typography>
 
@@ -43,7 +43,7 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {error && <Typography color="error" fontSize="0.8rem" mt={1}>{error}</Typography>}
+        {error && <Typography sx={{ color: 'error.main', fontSize: '0.8rem', mt: 1 }}>{error}</Typography>}
 
         <Button
           variant="contained"
