@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
 2:I[97367,["/_next/static/chunks/158myu8e_yme3.js"],"OutletBoundary"]
 3:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","h2",null,{"children":"AWS frontend deploy"}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"t_lJXUJVs_r5p4-UXNNCM"}
+0:{"rsc":["$","$1","c",{"children":[["$","h2",null,{"children":"AWS frontend deploy on Docker Hub and webhook enabled"}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZBLF6RnargrUdhBSicI3x"}
 4:null
