@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <h2>AWS frontend deploy</h2>
+    <h2>AWS frontend deploy on Docker Hub</h2>
   )
 }
