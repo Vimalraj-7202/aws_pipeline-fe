@@ -6,7 +6,7 @@ export default function Home() {
         fontWeight: "700",
         textAlign: "center",
         marginTop: "100px",
-        color: "#48463f",
+        color: "#0f0d8b",
       }}
     >
       🚀 AWS Frontend Successfully Deployed with Docker Hub & Render

@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
 2:I[97367,["/_next/static/chunks/158myu8e_yme3.js"],"OutletBoundary"]
 3:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","h2",null,{"style":{"fontSize":"2.5rem","fontWeight":"700","textAlign":"center","marginTop":"100px","color":"#48463f"},"children":"🚀 AWS Frontend Successfully Deployed with Docker Hub & Render"}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"uDkRaTK8b7XYbEEo6EsEF"}
+0:{"rsc":["$","$1","c",{"children":[["$","h2",null,{"style":{"fontSize":"2.5rem","fontWeight":"700","textAlign":"center","marginTop":"100px","color":"#0f0d8b"},"children":"🚀 AWS Frontend Successfully Deployed with Docker Hub & Render"}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"qB-KPkUW-4Bk2EEL-Lxym"}
 4:null
