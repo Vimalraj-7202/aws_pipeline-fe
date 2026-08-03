@@ -29,7 +29,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                docker build -t vimalraj7202/aws_fe-deployment:v1 .
+                docker build -t vimalraj7202/aws_fe-deployment:${BUILD_NUMBER} .
                 '''
             }
         }
@@ -43,7 +43,7 @@ pipeline {
                 )]) {
                     sh '''
                     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                    docker push vimalraj7202/aws_fe-deployment:v1
+                    docker push vimalraj7202/aws_fe-deployment:${BUILD_NUMBER}
                     docker logout
                     '''
                 }
@@ -67,7 +67,7 @@ pipeline {
                 docker run -d \
                   --name aws_fe-container \
                   -p 3000:80 \
-                  vimalraj7202/aws_fe-deployment:v1
+                  vimalraj7202/aws_fe-deployment:${BUILD_NUMBER}
                 '''
             }
         }
