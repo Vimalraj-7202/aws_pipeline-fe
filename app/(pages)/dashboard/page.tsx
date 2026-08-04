@@ -9,7 +9,7 @@ export default function DashboardPage() {
         color: 'black',
       }}
     >
-      Deploy<span style={{height:'20px',color:'blue'}}>X</span>
+      Deploy<span style={{height:'20px',color:'blue'}}>X</span> on Render
     </h2>
   );
 }
