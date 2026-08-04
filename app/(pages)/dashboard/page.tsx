@@ -6,10 +6,10 @@ export default function DashboardPage() {
         fontWeight: '700',
         textAlign: 'center',
         marginTop: '100px',
-        color: '#0f0d8b',
+        color: 'black',
       }}
     >
-      Frontend deployed on render via docker image
+      Deploy<span style={{height:'20px',color:'blue'}}>X</span>
     </h2>
   );
 }
